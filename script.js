@@ -1,6 +1,8 @@
 
 const wrapper = document.querySelector(".wrapper");
 const refreshBtn = document.querySelector(".refresh_btn");
+let messageBox = document.querySelector(".messageBox")
+
 
 const maxBoxes = 20;
 
@@ -29,8 +31,11 @@ const copyColor = (elem, HexValue) => {
     const colorElement = elem.querySelector(".hex-value")
     navigator.clipboard.writeText(`background: linear-gradient(-45deg,${HexValue})`).then(() => {
         colorElement.innerText = "Copied"
+        messageBox.classList.add("active")
         setTimeout(() => colorElement.innerText = HexValue, 1000)
+        setTimeout(() => messageBox.classList.remove("active"), 1000)
     }).catch(() => alert("Failed to copy the color code!"))
 }
 
 refreshBtn.addEventListener("click", generatePalette);
+
