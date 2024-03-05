@@ -27,7 +27,7 @@ generatePalette();
 
 const copyColor = (elem, HexValue) => {
     const colorElement = elem.querySelector(".hex-value")
-    navigator.clipboard.writeText(HexValue).then(() => {
+    navigator.clipboard.writeText(`background: linear-gradient(-45deg,${HexValue})`).then(() => {
         colorElement.innerText = "Copied"
         setTimeout(() => colorElement.innerText = HexValue, 1000)
     }).catch(() => alert("Failed to copy the color code!"))
